@@ -1,6 +1,6 @@
 window.addEventListener("scroll", async() => {
   await appendIcon();
-})
+});
 
 async function appendIcon() {
     let divs = await document.querySelectorAll("div"); // Load Div Elements
@@ -38,18 +38,14 @@ async function appendIcon() {
           const enteredId = tweetId.match(tweetIDRegex)[0];
           appendDiv.setAttribute("data-testid", enteredId);  
           
-
-
           //Assign click handler to appendDiv
-          appendDiv.addEventListener("click", async (e) => {
+          appendDiv.addEventListener("click", (e) => {
+              const idToBeSent = enteredId;
+              let sending = chrome.runtime.sendMessage({
+                message: idToBeSent
+              });
             //Prevents redirection to tweet page
             e.stopPropagation();
-            //Prevents double message sending. Else message will be sent twice
-            e.preventDefault();
-            const idToBeSent = enteredId;
-            let sending = await chrome.runtime.sendMessage({
-              message: idToBeSent
-            });
           });
         }
       } 
@@ -61,26 +57,6 @@ async function appendIcon() {
       }
     }
 }
-
-let successMessage;
-let success =  false;
-
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  successMessage = request.response;
-
-  //Try to remove this all together so that you don't get multiple responses
-  //At the database, implement a logic to make sure that a collection of tweeks
-  //has unique tweets only. None of them should be repeated
-
-//   if(request.response === "Success"){
-//     success = true;
-//     console.log("Success")
-//   }
-  
-// if(success){
-//   alert("Successfully added :)");
-// }
-}); 
 
 {/* <div class="css-1dbjc4n r-18u37iz r-1h0z5md">
     <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">

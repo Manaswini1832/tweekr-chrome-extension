@@ -1,18 +1,21 @@
 function handleMessage(request, sender, sendResponse) {
-    console.clear();
-    console.log("Message from the content script: " +
-      request.message);
+    // console.clear();
+    console.log("Message from the content script: " + request.message);
 
-    // sendResponse(request);
-    const response = { 
-        response: "Success",
+    try {
+        //After receiving id, store data to the database
+        console.log("Successfully Tweeked!");
+        //Send success notification to the content script and display it to the user
+        chrome.notifications.create({
+            iconUrl: chrome.runtime.getURL('tweekr-logo-optimized.svg'),
+            type: 'basic',
+            title: "",
+            message: "Successfully tweeked 🎉",
+          }, function() {});
+    } catch (err) {
+        throw err;
     }
 
-    //Send above success message to the content script on successfully adding tweek to database
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
-        chrome.tabs.sendMessage(tabs[0].id, response);
-    });
-
-    console.clear();
+    // console.clear();
 }
 chrome.runtime.onMessage.addListener(handleMessage);

@@ -3,3 +3,21 @@ div with data-testid tweet
         second div
             third div
                 add fifth div containing tweekr's icon!
+
+
+
+
+
+
+
+
+
+
+
+
+I could do this notification thing all day
+
+But now I'm kind of tired of making chrome extensions
+
+
+Let's switch gears and go into developing the dashboard
