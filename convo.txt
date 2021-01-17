@@ -5,19 +5,12 @@ div with data-testid tweet
                 add fifth div containing tweekr's icon!
 
 
+Ok then Twitch!! This was an amazing live stream
+
+Took a lot of time figure out but finally solved the issue
 
 
+Anyways, see you in tomorrow's stream
 
 
-
-
-
-
-
-
-I could do this notification thing all day
-
-But now I'm kind of tired of making chrome extensions
-
-
-Let's switch gears and go into developing the dashboard
+Bye :)

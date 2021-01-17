@@ -1,6 +1,8 @@
 function handleMessage(request, sender, sendResponse) {
+    if(request){
     // console.clear();
-    console.log("Message from the content script: " + request.message);
+    console.log("Message from the content script: " + request);
+    }
 
     try {
         //After receiving id, store data to the database
