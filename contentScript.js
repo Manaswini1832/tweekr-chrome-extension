@@ -1,6 +1,15 @@
-window.addEventListener("scroll", async() => {
-  await appendIcon();
+chrome.runtime.sendMessage({ message : "From_content_script_want_auth_status"}, (res) => {
+  if(res.message === "Message successfully received" && res.payload ){
+      //Add icon to each tweet
+      window.addEventListener("scroll", async() => {
+        await appendIcon();
+      });
+  }else{
+    console.log("Should authenticate");
+  }
 });
+
+//FUNCTIONS TO APPEND ICON AND ADD AN EVENT LISTENER TO EACH ICON
 
 async function appendIcon() {
     let divs = await document.querySelectorAll("div"); // Load Div Elements
@@ -19,10 +28,12 @@ async function appendIcon() {
       if (divDebug){
       //This is the div to which the icon is to be appended
       let reqdDiv;
-      if(divDebug.childNodes[1].childNodes[1].childNodes[2].getAttribute("role") === "group"){
-        reqdDiv = divDebug.childNodes[1].childNodes[1].childNodes[2];
-      }else{
-        reqdDiv = divDebug.childNodes[1].childNodes[1].childNodes[3];
+      if(divDebug.childNodes[1].childNodes[1]){
+        if(divDebug.childNodes[1].childNodes[1].childNodes[2].getAttribute("role") === "group"){
+          reqdDiv = divDebug.childNodes[1].childNodes[1].childNodes[2];
+        }else{
+          reqdDiv = divDebug.childNodes[1].childNodes[1].childNodes[3];
+        }
       }
 
       appendDiv = document.createElement('div');
@@ -63,14 +74,14 @@ async function appendIcon() {
   }
 }
 
-    function appendDivListener(appendDiv, idToBeSent, containsImage){
+function appendDivListener(appendDiv, idToBeSent, containsImage){
       if(!containsImage){
           //if containsImage is false do this
           //Assign click handler to appendDiv
           appendDiv.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
-            let sending = chrome.runtime.sendMessage(idToBeSent);
+            let sending = chrome.runtime.sendMessage({ message: "Sending ID", idToBeSent});
             appendDiv.getElementsByTagName("button")[0].setAttribute("disabled", true);
             appendDiv.getElementsByTagName("button")[0].getElementsByTagName("svg")[0].style.pointerEvents = "none";
       });
@@ -80,7 +91,7 @@ async function appendIcon() {
             containsImage = false;
             });
       }
-    }
+}
 
 {/* <div class="css-1dbjc4n r-18u37iz r-1h0z5md">
     <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">

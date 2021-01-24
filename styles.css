@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  width: 400px;
+  font-size: 1.5rem;
+  padding: 32px 1.5rem 1.5rem 1.5rem;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 3px solid #0b7fba;
+  font-weight: 400;
+}
+
+.box_popup p {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+button {
+  padding: 0.4rem 1rem;
+  max-width: 5rem;
+  font-family: inherit;
+  background-color: #0b7fba;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.note {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+
+.tweekr-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+}

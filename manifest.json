@@ -3,6 +3,9 @@
     "name" : "Experimental chrome extension",
     "description" : "Experimental chrome extension",
     "version" : "1.0",
+    "browser_action": {
+        "default_popup": "./popup.html"
+    }, 
     "content_scripts": [
         {
             "matches" : [
@@ -13,8 +16,11 @@
         }
     ],
     "background" : {
-        "scripts" : ["background.js"],
-        "persistent" : false
+        "page" : "background.html"
     },
-    "permissions": ["contextMenus", "tabs", "notifications"]
+    "externally_connectable": {
+        "matches": ["http://localhost:3000/*"]
+    },
+    "permissions": ["notifications", "http://localhost:3000/", "tabs", "cookies", "storage"],
+    "content_security_policy"  :  "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
 }
