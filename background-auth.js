@@ -1,10 +1,19 @@
+const clientEndpoint = "http://localhost:3000/";
+
 let authenticated = false;
+
+//Gets cookie from Tweekr's storage
 function getCookie(){
-    chrome.cookies.get({name :"session", url: "http://localhost:3000/"}, (res) => {
+    chrome.cookies.get({name :"session", url: clientEndpoint}, (res) => {
         if(res) {
             authenticated = true;
         }else{
-            authenticated = false;
+            authenticated = false; 
+
+            //If there's no cookie, and a user id exists in local storage, delete it
+            // if(!localStorage.getItem("uid")){
+            //     userID = localStorage.deleteItem("uid");
+            // }
         }
     });
 }
@@ -35,6 +44,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if(request.message === "Tabs coming!!!"){
         const currentTabId = request.payload[0].id;
-        chrome.tabs.update(currentTabId, {url: "http://localhost:3000/login"});
+        chrome.tabs.update(currentTabId, {url: `${clientEndpoint}/login`});
     }
 });

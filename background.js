@@ -26,12 +26,12 @@ async function handleMessage(request, sender, sendResponse) {
         }
     }    
     var firebaseConfig = {
-        apiKey: "AIzaSyAN5c98Gziv1pLEP7FltONAcDS07MO7VXE",
-        authDomain: "dummy-extension-6d140.firebaseapp.com",
-        projectId: "dummy-extension-6d140",
-        storageBucket: "dummy-extension-6d140.appspot.com",
-        messagingSenderId: "885057001572",
-        appId: "1:885057001572:web:3d7d4f3436f207cdb52771"
+        apiKey: "AIzaSyBEDA2cJZJvCS6rRhnHqgitFCZj2MiDGao",
+        authDomain: "server-auth-51141.firebaseapp.com",
+        projectId: "server-auth-51141",
+        storageBucket: "server-auth-51141.appspot.com",
+        messagingSenderId: "20867979546",
+        appId: "1:20867979546:web:17149a40548c5b0a39f4a3"
     }
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);

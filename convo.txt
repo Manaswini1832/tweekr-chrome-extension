@@ -4,68 +4,7 @@ div with data-testid tweet
             third div
                 add fifth div containing tweekr's icon!
 
-- Get data acc to the collection the user is on
-- Add data to given collections ( Has to do with Postgres )
-- Move tweet to a collection ( From uncategorized ) ----> Has to do with Firestore
 
-
-
-
-
-
-
-
--Deal with tweets showing up twice
--Move to a given collection option and simultaneous delete from Firestore
--Postgres and API stuff
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-I can't think properly now
-
-Will come tomorrow with a better plan
-
-
-Maybe tomorrow I'll be able to finish up the Firestore part and integrating the web app with Postgres
-to do CRUD with it
-
-After that I'll work on developing the UI too
-
-Auth, I have no idea when I'll do it!
-
-
-
-Anyways, ending the stream now
-
-Will see you tomorrow
-
-Thanks for joining
-
-Bye :)
+Now whenever you have to change localhost:3000 to deployed url, you only need to do it at two places
+1) Inside the background-auth.js file just change the clientEndpoint constant at the top of the file
+2) Change all instances of it in the manifest.json file
